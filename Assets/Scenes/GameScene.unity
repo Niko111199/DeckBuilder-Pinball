@@ -8686,7 +8686,6 @@ MonoBehaviour:
   numberOfBalls: 3
   currentNumberOfBalls: 0
   ballPool: {fileID: 1456314339}
-  Shop: {fileID: 0}
   IsShopOpen: 0
   pinballcamera: {fileID: 1888413603}
   ShopCamera: {fileID: 1330525597}
@@ -9520,6 +9519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1807836645}
   - component: {fileID: 1807836646}
+  - component: {fileID: 1807836647}
   m_Layer: 0
   m_Name: DropPoint
   m_TagString: Untagged
@@ -9565,7 +9565,19 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0.06, y: -0.89, z: -0.15}
+  m_Center: {x: 0.060000002, y: -0.75, z: -0.14999998}
+--- !u!114 &1807836647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807836644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f365dd45f8bc0f443bcdf740619a2e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WinPriceCollider
 --- !u!1 &1832763518
 GameObject:
   m_ObjectHideFlags: 0

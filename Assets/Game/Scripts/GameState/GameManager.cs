@@ -15,8 +15,6 @@ public class GameManager : MonoBehaviour
     public int numberOfBalls = 3;
     public int currentNumberOfBalls;
     public ObjectPool ballPool;
-    //TODO: Abstract out the shop system
-    public GameObject Shop;
     public bool IsShopOpen = false;
     public GameObject pinballcamera;
     public GameObject ShopCamera;

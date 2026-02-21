@@ -13,9 +13,9 @@ public abstract class PlaceableItem : ShopItem
 
        PlacementSystem Placement = Object.FindAnyObjectByType<PlacementSystem>(FindObjectsInactive.Include);
        Placement.SetNewIndicator(prefab);
-        BuildState buildState = new BuildState(GameManager.Instance);
+       BuildState buildState = new BuildState(GameManager.Instance);
+       GameManager.Instance.MoveCameraSmooth(GameManager.Instance.pinballcamera.transform, 1);
        buildState.SetItemToPlace(prefab);
        GameManager.Instance.ChangeState(buildState);
-       GameManager.Instance.Shop.SetActive(false); 
     }
 }
