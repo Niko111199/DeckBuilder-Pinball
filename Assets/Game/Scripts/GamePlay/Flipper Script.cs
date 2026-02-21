@@ -29,17 +29,21 @@ public class FlipperScript : MonoBehaviour
 
     void Update()
     {
+        //TODO: make so the flippers only can flip in game mode
         JointSpring spring = new JointSpring();
         spring.spring = flipperStrength;
         spring.damper = flipperDamper;
 
-        if (flipperAction.IsPressed())
+        if (GameManager.Instance.currentState is GameState)
         {
-            spring.targetPosition = pressedPosition;
-        }
-        else
-        {
-            spring.targetPosition = restPostion;
+            if (flipperAction.IsPressed())
+            {
+                spring.targetPosition = pressedPosition;
+            }
+            else
+            {
+                spring.targetPosition = restPostion;
+            }
         }
         hinge.spring = spring;
     }

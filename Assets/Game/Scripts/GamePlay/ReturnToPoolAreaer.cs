@@ -24,6 +24,16 @@ public class ReturnToPoolAreaer : MonoBehaviour
                 RoundState currentRound = (RoundState)GameManager.Instance.currentState;
                 currentRound.FinishRound();
             }
+
+            if (GameManager.Instance.score.playerScore == GameManager.Instance.requredScore)
+            {
+                //TODO: make sure that the player gets the gold for the balls left in the pool
+                Gold.Instance.AddGold(GameManager.Instance.currentNumberOfBalls);
+                GameManager.Instance.currentNumberOfBalls = 0;
+
+                RoundState currentRound = (RoundState)GameManager.Instance.currentState;
+                currentRound.FinishRound();
+            }
         } 
     }
 }

@@ -1,14 +1,25 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ShopState : GameState
 {
     public ShopState(GameManager manager) : base(manager) { }
+    public GameObject pinballcamera;
+    public GameObject ShopCamera;
+    public Camera mainCamera;
 
     public override void Enter()
     {
         GameManager.Instance.IsShopOpen = true;
-        GameManager.Instance.Shop.SetActive(true);
+        //GameManager.Instance.Shop.SetActive(true);
+
+        pinballcamera = GameManager.Instance.pinballcamera;
+        ShopCamera = GameManager.Instance.ShopCamera;
+        mainCamera = Camera.main;
+
+        GameManager.Instance.MoveCameraSmooth(ShopCamera.transform, 1f);
+
         Debug.Log("Shop opened");
     }
 
@@ -23,7 +34,10 @@ public class ShopState : GameState
 
     public override void Exit()
     {
-        GameManager.Instance.Shop.SetActive(false);
+        //GameManager.Instance.Shop.SetActive(false);
+
+        GameManager.Instance.MoveCameraSmooth(pinballcamera.transform, 1f);
+
         Debug.Log("Shop closed");
     }
 }
