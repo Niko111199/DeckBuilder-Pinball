@@ -12,7 +12,7 @@ public class ShopState : GameState
     public override void Enter()
     {
         GameManager.Instance.IsShopOpen = true;
-        //GameManager.Instance.Shop.SetActive(true);
+        GameManager.Instance.ShopUi.SetActive(true);
 
         pinballcamera = GameManager.Instance.pinballcamera;
         ShopCamera = GameManager.Instance.ShopCamera;
@@ -34,8 +34,6 @@ public class ShopState : GameState
 
     public override void Exit()
     {
-        //GameManager.Instance.Shop.SetActive(false);
-
         GameManager.Instance.MoveCameraSmooth(pinballcamera.transform, 1f);
 
         Debug.Log("Shop closed");

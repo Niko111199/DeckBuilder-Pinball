@@ -2,10 +2,12 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class WinPriceCollider : MonoBehaviour
 {
     private List<ShopItem> prizes = new List<ShopItem>();
+    public GameObject ResetBallPoint;
 
     private void Start()
     {
@@ -44,6 +46,16 @@ public class WinPriceCollider : MonoBehaviour
             int randomIndex = UnityEngine.Random.Range(0, prizes.Count);
             prizes[randomIndex].BuyItem();
             Debug.Log("Awarded prize: " + prizes[randomIndex].itemName);
+
+            WaitForSeconds wait = new WaitForSeconds(2f);
+            StartCoroutine(ResetBallAfterDelay(collision.gameObject));
         }
+    }
+
+    //TODO: make this more efficient by using a pool of balls and resetting them instead of instantiating new ones
+    IEnumerator ResetBallAfterDelay(GameObject ball)
+    {
+        yield return new WaitForSeconds(2f);
+        ball.transform.position = ResetBallPoint.transform.position;
     }
 }

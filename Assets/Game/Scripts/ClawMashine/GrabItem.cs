@@ -25,6 +25,8 @@ public class GrabItem : MonoBehaviour
     public bool isMoving = false;
     private GameObject grabbedObject = null;
 
+    public bool HasTicket = false;
+
     private void OnEnable()
     {
         grabAction.Enable();
@@ -41,7 +43,7 @@ public class GrabItem : MonoBehaviour
     {
         if (GameManager.Instance.currentState is ShopState)
         {
-            if (!isMoving)
+            if (!isMoving && HasTicket)
                 StartCoroutine(GrabRoutine());
         }
     }
@@ -67,7 +69,7 @@ public class GrabItem : MonoBehaviour
                     {
                         grabbedObject = hit.gameObject;
                         grabbedObject.transform.SetParent(claw);
-                        grabbedObject.transform.localPosition = Vector3.zero; // sikrer det følger claw korrekt
+                        grabbedObject.transform.localPosition = Vector3.zero; 
                         Rigidbody rb = grabbedObject.GetComponent<Rigidbody>();
                         if (rb != null) rb.isKinematic = true;
                         break;
@@ -109,6 +111,16 @@ public class GrabItem : MonoBehaviour
         }
 
         isMoving = false;
+        HasTicket = false;
+    }
+
+    public void buyTicket(int price)
+    {
+        if(Gold.Instance.GetGold() >= price)
+        {
+            Gold.Instance.RemoveGold(price);
+            HasTicket = true;
+        }
     }
 
     private void OnDrawGizmos()

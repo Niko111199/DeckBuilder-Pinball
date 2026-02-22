@@ -28,7 +28,7 @@ public class MoveClaw : MonoBehaviour
     {
         if (GameManager.Instance.currentState is ShopState)
         {
-            if (!grabber.isMoving)
+            if (!grabber.isMoving && grabber.HasTicket)
             {
                 float railInput = railAction.ReadValue<float>();
                 float carriageInput = carraigerAction.ReadValue<float>();

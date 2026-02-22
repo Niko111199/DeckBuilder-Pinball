@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public bool IsShopOpen = false;
     public GameObject pinballcamera;
     public GameObject ShopCamera;
+    public GameObject ShopUi;
 
     private void Awake()
     {
@@ -55,6 +56,7 @@ public class GameManager : MonoBehaviour
         if (IsShopOpen)
         {
             IsShopOpen = false;
+            ShopUi.SetActive(false);
         }
     }
 

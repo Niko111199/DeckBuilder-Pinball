@@ -33,4 +33,12 @@ public class ObjectPool : MonoBehaviour
         obj.transform.SetParent(transform);
         pool.Enqueue(obj);
     }
+
+    public void ReturnEverthingToPool()
+    {
+        foreach (Transform child in transform)
+        {
+            ReturnToPool(child.gameObject);
+        }
+    }
 }
