@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BuildState : GameState
 {
+    //TODO: find a better way then the empty GridLocator
     private GridLocator[] gridSystem;
     private GameObject itemToPlace;
 
