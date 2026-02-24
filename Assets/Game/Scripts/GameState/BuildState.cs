@@ -6,7 +6,7 @@ public class BuildState : GameState
     private GridLocator[] gridSystem;
     private GameObject itemToPlace;
 
-    public BuildState(GameManager gameManger) : base(gameManger) { }
+    public BuildState() : base() { }
 
     public void SetItemToPlace(GameObject item)
     {

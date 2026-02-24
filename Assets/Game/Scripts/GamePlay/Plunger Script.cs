@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class PlungerScript : MonoBehaviour
 {
-    public float power;
-    public float minPower = 0f;
-    public float maxPower = 100f;
-    public float chargeSpeed = 50f;
-    public Slider powerSlider;
-    public InputAction plungerAction;
+    [Header("powerbar Settings")]
+    [SerializeField] private float power;
+    [SerializeField] private float minPower = 0f;
+    [SerializeField] private float maxPower = 100f;
+    [SerializeField] private float chargeSpeed = 50f;
+    [SerializeField] private Slider powerSlider;
 
+    [Header("Controls")]
+    [SerializeField] private InputAction plungerAction;
 
     private List<Rigidbody> ballList = new List<Rigidbody>();
 

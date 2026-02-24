@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class ReturnToPoolAreaer : MonoBehaviour
 {
-    public ObjectPool objectPool;
+    [Header ("Collider Area")]
+    [SerializeField] private ObjectPool objectPool;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,28 +13,28 @@ public class ReturnToPoolAreaer : MonoBehaviour
 
             objectPool.ReturnToPool(other.gameObject);
 
-            GameManager.Instance.currentNumberOfBalls--;
+            GameManager.GetInstance().SetCurrentNumberOfBalls(GameManager.GetInstance().GetCurrentNumberOfBalls() - 1);
 
-            if (GameManager.Instance.currentNumberOfBalls > 0)
+            if (GameManager.GetInstance().GetCurrentNumberOfBalls() > 0)
             {
                 objectPool.GetFromPool();
             }
 
-            if (GameManager.Instance.currentNumberOfBalls <= 0)
+            if (GameManager.GetInstance().GetCurrentNumberOfBalls() <= 0)
             {
-                RoundState currentRound = (RoundState)GameManager.Instance.currentState;
+                RoundState currentRound = (RoundState)GameManager.GetInstance().GetCurrentState();
                 currentRound.FinishRound();
             }
 
-            if (GameManager.Instance.score.playerScore >= GameManager.Instance.requredScore)
+            if (Score.GetInstance().GetScore() >= GameManager.GetInstance().GetRequredScore())
             {
                 //TODO: make sure that the player gets the gold for the balls left in the pool
-                Gold.Instance.AddGold(GameManager.Instance.currentNumberOfBalls);
+                Gold.GetInstance().AddGold(GameManager.GetInstance().GetCurrentNumberOfBalls());
 
                 objectPool.ReturnEverthingToPool();
-                GameManager.Instance.currentNumberOfBalls = 0;
+                GameManager.GetInstance().SetCurrentNumberOfBalls(0);
 
-                RoundState currentRound = (RoundState)GameManager.Instance.currentState;
+                RoundState currentRound = (RoundState)GameManager.GetInstance().GetCurrentState();
                 currentRound.FinishRound();
             }
         } 

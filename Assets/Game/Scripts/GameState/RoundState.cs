@@ -4,19 +4,18 @@ public class RoundState : GameState
 {
     private bool roundFinished;
 
-
-    public RoundState(GameManager manager) : base(manager) { }
+    public RoundState() : base() { }
 
     public override void Enter()
     {
-        Debug.Log("Round started: " + GameManager.Instance.currentRound);
-        GameManager.Instance.score.ClereScore();
-        GameManager.Instance.currentNumberOfBalls = GameManager.Instance.numberOfBalls;
-        GameManager.Instance.requredScore = GameManager.Instance.currentRound * 100;
+        Debug.Log("Round started: " + GameManager.GetInstance().GetCurrentRound());
+        Score.GetInstance().ClereScore();
+        GameManager.GetInstance().SetCurrentNumberOfBalls(GameManager.GetInstance().GetNumberOfBalls());
+        GameManager.GetInstance().SetRequredScore(GameManager.GetInstance().GetCurrentRound() * 100);
 
         roundFinished = false;
 
-        GameManager.Instance.ballPool.GetFromPool();
+        GameManager.GetInstance().GetBallPool().GetFromPool();
     }
 
     public override void Update()
@@ -24,26 +23,26 @@ public class RoundState : GameState
         if (!roundFinished)
             return;
 
-        if (GameManager.Instance.score.GetScore() >= GameManager.Instance.requredScore)
+        if (Score.GetInstance().GetScore() >= GameManager.GetInstance().GetRequredScore())
         {
-            if (GameManager.Instance.currentRound >= GameManager.Instance.FinalRound)
+            if (GameManager.GetInstance().GetCurrentRound() >= GameManager.GetInstance().GetFinalRound())
             {
-                GameManager.Instance.ChangeState(new VictoryState(GameManager.Instance));
+                GameManager.GetInstance().ChangeState(new VictoryState());
             }
             else
             {
-                GameManager.Instance.ChangeState(new ShopState(GameManager.Instance));
+                GameManager.GetInstance().ChangeState(new ShopState());
             }
         }
         else
         {
-            GameManager.Instance.ChangeState(new LoseState(GameManager.Instance));
+            GameManager.GetInstance().ChangeState(new LoseState());
         }
     }
 
     public void FinishRound()
     {
-        Gold.Instance.AddGold(2);
+        Gold.GetInstance().AddGold(2);
         roundFinished = true;
     }
 

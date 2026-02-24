@@ -15,8 +15,8 @@ public class MorePoints : ShopItem
 
         foreach (BumperPointAdder bumper in bumpers)
         {
-            bumper.pointsToAdd += 5;
+            int current = bumper.GetPointsToAdd();
+            bumper.SetPointsToAdd(current + 5);
         }
-
     }
 }

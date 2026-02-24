@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class Gold : MonoBehaviour
 {
-    public static Gold Instance { get; private set; }
+    private static Gold Instance;
 
-    public int goldAmount = 0;
+    [Header("Amount Of Gold")]
+    [SerializeField] private int goldAmount = 0;
 
     private void Awake()
     {
@@ -17,6 +18,11 @@ public class Gold : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    public static Gold GetInstance()
+    {
+        return Instance;
     }
 
     public void AddGold(int amount)

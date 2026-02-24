@@ -7,7 +7,8 @@ using System.Collections;
 public class WinPriceCollider : MonoBehaviour
 {
     private List<ShopItem> prizes = new List<ShopItem>();
-    public GameObject ResetBallPoint;
+    [Header("Reset Ball")]
+    [SerializeField]private GameObject ResetBallPoint;
 
     private void Start()
     {
@@ -45,7 +46,7 @@ public class WinPriceCollider : MonoBehaviour
 
             int randomIndex = UnityEngine.Random.Range(0, prizes.Count);
             prizes[randomIndex].BuyItem();
-            Debug.Log("Awarded prize: " + prizes[randomIndex].itemName);
+            Debug.Log("Awarded prize: " + prizes[randomIndex].GetItemName());
 
             WaitForSeconds wait = new WaitForSeconds(2f);
             StartCoroutine(ResetBallAfterDelay(collision.gameObject));

@@ -11,7 +11,7 @@ using UnityEngine;
 //    public override void SetPrefab()
 //    {
 //        PrefabManager prefabmanger = Object.FindAnyObjectByType<PrefabManager>(FindObjectsInactive.Include);
-//        prefab = prefabmanger.Canon;
+//        prefab = prefabmanger.GetPrefab(3);
 //    }
 
     //TODO: make it posablable to rotate the canon, 

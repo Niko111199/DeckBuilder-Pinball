@@ -4,16 +4,18 @@ using UnityEngine.InputSystem;
 
 public class PlacementSystem : MonoBehaviour
 {
-    public GameObject cellIndicator;
-    public Grid grid;
-    public GameObject ParantObject;
+    [Header("Indicator")]
+    [SerializeField] private GameObject cellIndicator;
+    [SerializeField] private float indicatorHeight = 1.0f;
 
-    public MouseInput Input;
+    [Header("Grid")]
+    [SerializeField] private Grid grid;
+    [SerializeField] private GameObject ParantObject;
 
-    public float indicatorHeight = 1.0f;
+    [ Header("Input")]
+    [SerializeField] private MouseInput Input;
 
     private GameObject indcator;
-
     private Dictionary<Vector3Int, GameObject> placedObjects = new Dictionary<Vector3Int, GameObject>();
 
     public void SetNewIndicator(GameObject indicatorprefab)
@@ -41,7 +43,7 @@ public class PlacementSystem : MonoBehaviour
 
     private void TryPlaceObject(Vector3Int gridPosition)
     {
-        if (GameManager.Instance.currentState is not BuildState buildState)
+        if (GameManager.GetInstance().GetCurrentState() is not BuildState buildState)
             return;
 
         if (placedObjects.ContainsKey(gridPosition))
@@ -80,8 +82,6 @@ public class PlacementSystem : MonoBehaviour
         Debug.Log($"Placed object at {spawnPosition} on grid {gridPosition}!");
 
         Destroy(indcator);
-        GameManager.Instance.ChangeState(new ShopState(GameManager.Instance));
+        GameManager.GetInstance().ChangeState(new ShopState());
     }
-
-
 }

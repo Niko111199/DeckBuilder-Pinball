@@ -3,18 +3,24 @@ using UnityEngine.InputSystem;
 
 public class FlipperScript : MonoBehaviour
 {
-    public float restPostion = 0f;
-    public float pressedPosition = 45f;
-    public float flipperStrength = 10000f;
-    public float flipperDamper = 150f;
-    HingeJoint hinge;
-    public InputAction flipperAction;
+    [Header("flipper Settings")]
+    [SerializeField] private float restPostion = 0f;
+    [SerializeField] private float pressedPosition = 45f;
+    [SerializeField] private float flipperStrength = 10000f;
+    [SerializeField] private float flipperDamper = 150f;
+
+    [Header("Controlls")]
+    [SerializeField] private InputAction flipperAction;
+
+    private HingeJoint hinge;
 
     void Start()
     {
         hinge = GetComponent<HingeJoint>();
         hinge.useSpring = true;
     }
+
+    public 
 
     void OnEnable()
     {
@@ -26,6 +32,15 @@ public class FlipperScript : MonoBehaviour
         flipperAction.Disable();
     }
 
+    public float GetflipperStrength()
+    {
+        return flipperStrength;
+    }
+
+    public void SetFlipperStrenght(float value)
+    {
+        flipperStrength = value;
+    }
 
     void Update()
     {
@@ -34,7 +49,7 @@ public class FlipperScript : MonoBehaviour
         spring.spring = flipperStrength;
         spring.damper = flipperDamper;
 
-        if (GameManager.Instance.currentState is GameState)
+        if (GameManager.GetInstance().GetCurrentState() is GameState)
         {
             if (flipperAction.IsPressed())
             {

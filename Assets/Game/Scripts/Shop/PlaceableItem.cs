@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class PlaceableItem : ShopItem
 {
-    public GameObject prefab;
+    protected GameObject prefab;
 
     public abstract void SetPrefab();
 
@@ -13,9 +13,9 @@ public abstract class PlaceableItem : ShopItem
 
        PlacementSystem Placement = Object.FindAnyObjectByType<PlacementSystem>(FindObjectsInactive.Include);
        Placement.SetNewIndicator(prefab);
-       BuildState buildState = new BuildState(GameManager.Instance);
-       GameManager.Instance.MoveCameraSmooth(GameManager.Instance.pinballcamera.transform, 1);
+       BuildState buildState = new BuildState();
+       CameraHandler.GetInstance().MoveCameraSmooth(CameraHandler.GetInstance().GetShopCamera().transform, 1);
        buildState.SetItemToPlace(prefab);
-       GameManager.Instance.ChangeState(buildState);
+       GameManager.GetInstance().ChangeState(buildState);
     }
 }

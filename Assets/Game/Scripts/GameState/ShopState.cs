@@ -4,37 +4,36 @@ using UnityEngine.InputSystem;
 
 public class ShopState : GameState
 {
-    public ShopState(GameManager manager) : base(manager) { }
-    public GameObject pinballcamera;
-    public GameObject ShopCamera;
-    public Camera mainCamera;
+    private GameObject pinballcamera;
+    private GameObject ShopCamera;
+
+    public ShopState() : base() { }
 
     public override void Enter()
     {
-        GameManager.Instance.IsShopOpen = true;
-        GameManager.Instance.ShopUi.SetActive(true);
+        GameManager.GetInstance().SetIsShopOpen(true);
+        GameManager.GetInstance().getShopUi().SetActive(true);
 
-        pinballcamera = GameManager.Instance.pinballcamera;
-        ShopCamera = GameManager.Instance.ShopCamera;
-        mainCamera = Camera.main;
+        pinballcamera = CameraHandler.GetInstance().Getpinballcamera();
+        ShopCamera = CameraHandler.GetInstance().GetShopCamera();
 
-        GameManager.Instance.MoveCameraSmooth(ShopCamera.transform, 1f);
+        CameraHandler.GetInstance().MoveCameraSmooth(ShopCamera.transform, 1f);
 
         Debug.Log("Shop opened");
     }
 
     public override void Update()
     {
-        if (GameManager.Instance.IsShopOpen == false)
+        if (GameManager.GetInstance().GetIsShopOpen() == false)
         {
-            GameManager.Instance.currentRound++;
-            GameManager.Instance.ChangeState(new RoundState(GameManager.Instance));
+            GameManager.GetInstance().IncrementCurrentRound();
+            GameManager.GetInstance().ChangeState(new RoundState());
         }
     }
 
     public override void Exit()
     {
-        GameManager.Instance.MoveCameraSmooth(pinballcamera.transform, 1f);
+        CameraHandler.GetInstance().MoveCameraSmooth(pinballcamera.transform, 1f);
 
         Debug.Log("Shop closed");
     }

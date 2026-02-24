@@ -3,9 +3,11 @@ using UnityEngine.InputSystem;
 
 public class MouseInput : MonoBehaviour
 {
-    public Camera sceneCamera;
+    [Header("Camera")]
+    [SerializeField] private Camera sceneCamera;
     private Vector3 lastPositon;
-    public LayerMask PlacementLayerMask;
+    [Header("Layer Mask")]
+    [SerializeField] private LayerMask PlacementLayerMask;
 
     public Vector3 GetSelectedMapPosition()
     {

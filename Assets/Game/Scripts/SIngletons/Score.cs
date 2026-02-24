@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class Score : MonoBehaviour
 {
-    public static Score Instance { get; private set; }
+    private static Score Instance;
 
-    public int playerScore;
+    [Header("Player Score")]
+    [SerializeField] private int playerScore;
+
+    public static Score GetInstance()
+    {
+        return Instance;
+    }
 
     private void Awake()
     {

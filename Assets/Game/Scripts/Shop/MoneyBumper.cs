@@ -12,6 +12,6 @@ public class MoneyBumper : PlaceableItem
     public override void SetPrefab()
     {
         PrefabManager prefabmanger = Object.FindAnyObjectByType<PrefabManager>(FindObjectsInactive.Include);
-        prefab = prefabmanger.MoneyBumper;
+        prefab = prefabmanger.GetPrefab(0);
     }
 }

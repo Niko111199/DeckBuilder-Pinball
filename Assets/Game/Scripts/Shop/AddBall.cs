@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class AddBall:ShopItem
 {
-    //TODO: Add icon
     public AddBall()
     {
         itemName = "Extra Ball";
@@ -12,7 +11,7 @@ public class AddBall:ShopItem
 
     public override void BuyItem()
     {
-        GameManager.Instance.numberOfBalls += 1;
+        GameManager.GetInstance().SetNumberOfBalls(GameManager.GetInstance().GetNumberOfBalls() + 1);
         Debug.Log("Ball Added");
     }
 }

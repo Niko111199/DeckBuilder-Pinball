@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class MoreFlipperStrength : ShopItem
 {
-    public float powerToAdd = 5000f;
+    private float powerToAdd = 5000f;
+    private float totalPowerAddet = 0f;
 
     public MoreFlipperStrength()
     {
@@ -18,7 +19,10 @@ public class MoreFlipperStrength : ShopItem
 
         foreach (FlipperScript flipper in flippers)
         {
-            flipper.flipperStrength += powerToAdd;
+            float currentStrength = flipper.GetflipperStrength();
+            flipper.SetFlipperStrenght(currentStrength + powerToAdd);
+
+            totalPowerAddet += powerToAdd;
         }
 
         Debug.Log("Flipper strength increased by " + powerToAdd);

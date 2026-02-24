@@ -4,28 +4,26 @@ using UnityEngine.InputSystem;
 
 public class GrabItem : MonoBehaviour
 {
-    //TODO: Add Headers to all varribal fildes, to improve workflow
-
     [Header("Claw Movement")]
-    public Transform claw;
-    public float moveSpeed = 3f;
-    public float downDistance = 2f;
+    [SerializeField] private Transform claw;
+    [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private float downDistance = 2f;
 
     [Header("Grab Settings")]
-    public float grabRadius = 0.5f;
-    public string grabTag = "Prize";
-    public Vector3 grabOffset = Vector3.zero; 
+    [SerializeField] private float grabRadius = 0.5f;
+    [SerializeField] private string grabTag = "Prize";
+    [SerializeField] private Vector3 grabOffset = Vector3.zero; 
 
     [Header("Drop Point")]
-    public Transform dropPoint;
+    [SerializeField] private Transform dropPoint;
 
     [Header("Input")]
-    public InputAction grabAction;
+    [SerializeField] private InputAction grabAction;
 
-    public bool isMoving = false;
+    private bool isMoving = false;
     private GameObject grabbedObject = null;
 
-    public bool HasTicket = false;
+    private bool HasTicket = false;
 
     private void OnEnable()
     {
@@ -39,9 +37,19 @@ public class GrabItem : MonoBehaviour
         grabAction.Disable();
     }
 
+    public bool GetHasTicket()
+    {
+        return HasTicket;
+    }
+
+    public bool GetIsMoving()
+    {
+        return isMoving;
+    }
+
     void StartGrab()
     {
-        if (GameManager.Instance.currentState is ShopState)
+        if (GameManager.GetInstance().GetCurrentState() is ShopState)
         {
             if (!isMoving && HasTicket)
                 StartCoroutine(GrabRoutine());
@@ -116,9 +124,9 @@ public class GrabItem : MonoBehaviour
 
     public void buyTicket(int price)
     {
-        if(Gold.Instance.GetGold() >= price)
+        if(Gold.GetInstance().GetGold() >= price)
         {
-            Gold.Instance.RemoveGold(price);
+            Gold.GetInstance().RemoveGold(price);
             HasTicket = true;
         }
     }

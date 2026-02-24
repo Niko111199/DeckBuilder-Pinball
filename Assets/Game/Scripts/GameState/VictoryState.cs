@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class VictoryState : GameState
 {
-    public VictoryState(GameManager manager) : base(manager) { }
+    public VictoryState() : base() { }
 
     public override void Enter()
     {

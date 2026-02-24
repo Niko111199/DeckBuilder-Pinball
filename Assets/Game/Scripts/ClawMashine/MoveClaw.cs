@@ -3,20 +3,22 @@ using UnityEngine.InputSystem;
 
 public class MoveClaw : MonoBehaviour
 {
-    public InputAction railAction;
-    public InputAction carraigerAction;
+    [Header("Controls")]
+    [SerializeField] private InputAction railAction;
+    [SerializeField] private InputAction carraigerAction;
 
-    public Transform rail;
-    public Transform carriage;    
+    [Header("References")]
+    [SerializeField] private Transform rail;
+    [SerializeField] private Transform carriage;
+    [SerializeField] private GrabItem grabber;
 
-    public float speed = 3.0f;
-    public float maxDistanceRail = 5.0f;
-    public float maxDistanceCarriage = 5.0f;
+    [Header("Settings")]
+    [SerializeField] private float speed = 3.0f;
+    [SerializeField] private float maxDistanceRail = 5.0f;
+    [SerializeField] private float maxDistanceCarriage = 5.0f;
 
     private Vector3 railStartPos;
     private Vector3 carriageStartPos;
-
-    public GrabItem grabber;
 
     private void Start()
     {
@@ -26,9 +28,9 @@ public class MoveClaw : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.currentState is ShopState)
+        if (GameManager.GetInstance().GetCurrentState() is ShopState)
         {
-            if (!grabber.isMoving && grabber.HasTicket)
+            if (!grabber.GetIsMoving() && grabber.GetHasTicket())
             {
                 float railInput = railAction.ReadValue<float>();
                 float carriageInput = carraigerAction.ReadValue<float>();

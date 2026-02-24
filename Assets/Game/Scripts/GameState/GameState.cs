@@ -4,9 +4,9 @@ public abstract class GameState
 {
     protected GameManager gameManger;
 
-    public GameState(GameManager gameManger)
+    public GameState()
     {
-        this.gameManger = gameManger;
+        gameManger = GameManager.GetInstance();
     }
 
     public virtual void Enter() { }

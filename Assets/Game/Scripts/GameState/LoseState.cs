@@ -2,14 +2,11 @@ using UnityEngine;
 
 public class LoseState : GameState
 {
-    public LoseState(GameManager manager) : base(manager) { }
-
-
+    public LoseState() : base() { }
 
     public override void Enter()
     {
         GameObject loseScreen = FindInactiveObjectByName("Loose Panel");
-        GameManager.Instance.ResetGame();
         loseScreen.SetActive(true);
         Debug.Log("GAME OVER");
     }

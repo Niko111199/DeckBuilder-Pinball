@@ -3,22 +3,98 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    private static GameManager Instance;
 
     //TODO: make pusable to Reset Game
-    //TODO: General clean up
-    public GameState currentState;
-    public Score score;
-    public int requredScore;
-    public int currentRound = 1;
-    public int FinalRound = 8;
-    public int numberOfBalls = 3;
-    public int currentNumberOfBalls;
-    public ObjectPool ballPool;
-    public bool IsShopOpen = false;
-    public GameObject pinballcamera;
-    public GameObject ShopCamera;
-    public GameObject ShopUi;
+    [Header("Refrences")]
+    [SerializeField] private GameState currentState;
+    [SerializeField] private ObjectPool ballPool;
+    [SerializeField] private GameObject ShopUi;
+    [SerializeField] private GameObject PlayerPlacedItemParant;
+    [SerializeField] private GameObject looseUI;
+
+    private int currentRound = 1;
+    private int FinalRound = 8;
+    private int requredScore;
+    private int numberOfBalls = 3;
+    private int currentNumberOfBalls;
+
+    private bool IsShopOpen = false;
+
+    public static GameManager GetInstance()
+    {
+        return Instance;
+    }
+
+    public GameState GetCurrentState()
+    {
+        return currentState;
+    }
+
+    public int GetCurrentRound()
+    {
+        return currentRound;
+    }
+
+    public int GetCurrentNumberOfBalls()
+    {
+        return currentNumberOfBalls;
+    }
+
+    public int GetNumberOfBalls()
+    {
+        return numberOfBalls;
+    }
+
+    public int GetRequredScore()
+    {
+        return requredScore;
+    }
+
+    public void SetRequredScore(int value)
+    {
+        requredScore = value;
+    }
+
+    public ObjectPool GetBallPool()
+    {
+        return ballPool;
+    }
+
+    public int GetFinalRound()
+    {
+        return FinalRound;
+    }
+
+    public bool GetIsShopOpen()
+    {
+        return IsShopOpen;
+    }
+
+    public void SetIsShopOpen(bool value)
+    {
+        IsShopOpen = value;
+    }
+
+    public GameObject getShopUi()
+    {
+        return ShopUi;
+    }
+
+    public void SetCurrentNumberOfBalls(int value)
+    {
+        currentNumberOfBalls = value;
+    }
+
+    public void SetNumberOfBalls(int value)
+    {
+        numberOfBalls = value;
+    }
+
+    public void IncrementCurrentRound()
+    {
+        currentRound++;
+    }
 
     private void Awake()
     {
@@ -35,7 +111,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        ChangeState(new RoundState(this));
+        ChangeState(new RoundState());
     }
 
     void Update()
@@ -64,38 +140,36 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         currentRound = 1;
-        score.ClereScore();
-        numberOfBalls = 3;
-        ChangeState(new RoundState(this));
-    }
 
-    //TODO: Abstract out the camera system, this is just a quick way to move the camera to the shop and back, but it should be more flexible and reusable
-    public void MoveCameraSmooth(Transform target, float duration)
-    {
-        StartCoroutine(MoveCameraCoroutine(target, duration));
-    }
+        Score.GetInstance().ClereScore();
+        Gold.GetInstance().ClearGold();
+        CameraHandler.GetInstance().ResetCamera();
 
-    private IEnumerator MoveCameraCoroutine(Transform target, float duration)
-    {
-        Camera cam = Camera.main;
-
-        Vector3 startPos = cam.transform.position;
-        Quaternion startRot = cam.transform.rotation;
-
-        float time = 0f;
-
-        while (time < duration)
+        foreach (Transform child in PlayerPlacedItemParant.transform)
         {
-            time += Time.deltaTime;
-            float t = time / duration;
-
-            cam.transform.position = Vector3.Lerp(startPos, target.position, t);
-            cam.transform.rotation = Quaternion.Slerp(startRot, target.rotation, t);
-
-            yield return null;
+            Destroy(child.gameObject);
         }
 
-        cam.transform.position = target.position;
-        cam.transform.rotation = target.rotation;
+        FlipperScript[] flippers =
+           Object.FindObjectsByType<FlipperScript>(FindObjectsSortMode.None);
+
+        foreach (FlipperScript flipper in flippers)
+        {
+            flipper.SetFlipperStrenght(10000f);
+        }
+
+        BumperPointAdder[] bumpers = GameObject.FindObjectsByType<BumperPointAdder>(FindObjectsSortMode.None);
+
+        foreach (BumperPointAdder bumper in bumpers)
+        {
+            bumper.ResetPoints();
+        }
+
+        looseUI.SetActive(false);
+
+        numberOfBalls = 3;
+        ChangeState(new RoundState());
+
+        Debug.Log("Game Reset");
     }
 }

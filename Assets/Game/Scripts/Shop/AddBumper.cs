@@ -12,6 +12,6 @@ public class AddBumper : PlaceableItem
     public override void SetPrefab()
     {
         PrefabManager prefabmanger = Object.FindAnyObjectByType<PrefabManager>(FindObjectsInactive.Include);
-        prefab = prefabmanger.PointBumper;
+        prefab = prefabmanger.GetPrefab(1);
     }
 }

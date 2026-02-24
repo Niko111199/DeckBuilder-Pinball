@@ -2,10 +2,26 @@ using UnityEngine;
 
 public abstract class ShopItem
 {
-    public string itemName;
-    public int price;
+    protected string itemName;
+    //TODO: remove Price, its not used anymore
+    protected int price;
     //TODO: add Raraty
-    public string description;
+    protected string description;
 
     public abstract void BuyItem();
+
+    public string GetItemName()
+    {
+        return itemName;
+    }
+
+    public int GetPrice()
+    {
+        return price;
+    }
+
+    public string GetDescription()
+    {
+        return description;
+    }
 }

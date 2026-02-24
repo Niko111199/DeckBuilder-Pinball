@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-    public GameObject prefab;
-    public int poolSize = 10;
-    public Transform SpawnPoint;
+    [Header("Pool Settings")]
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private int poolSize = 10;
+    [SerializeField] private Transform SpawnPoint;
 
     private Queue<GameObject> pool = new Queue<GameObject>();
 
