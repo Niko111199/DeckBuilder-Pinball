@@ -42,7 +42,6 @@ public class CameraHandler : MonoBehaviour
         else
         {
             instance = this;
-            DontDestroyOnLoad(this.gameObject);
         }
     }
 

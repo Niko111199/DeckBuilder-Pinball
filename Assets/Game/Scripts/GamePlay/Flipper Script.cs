@@ -20,8 +20,6 @@ public class FlipperScript : MonoBehaviour
         hinge.useSpring = true;
     }
 
-    public 
-
     void OnEnable()
     {
         flipperAction.Enable();
@@ -44,14 +42,11 @@ public class FlipperScript : MonoBehaviour
 
     void Update()
     {
-        //TODO: make so the flippers only can flip in game mode
         JointSpring spring = new JointSpring();
         spring.spring = flipperStrength;
         spring.damper = flipperDamper;
 
-        if (GameManager.GetInstance().GetCurrentState() is GameState)
-        {
-            if (flipperAction.IsPressed())
+            if (flipperAction.IsPressed() && GameManager.GetInstance().GetCurrentState() is RoundState)
             {
                 spring.targetPosition = pressedPosition;
             }
@@ -59,7 +54,7 @@ public class FlipperScript : MonoBehaviour
             {
                 spring.targetPosition = restPostion;
             }
-        }
+
         hinge.spring = spring;
     }
 }

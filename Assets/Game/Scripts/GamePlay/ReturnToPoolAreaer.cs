@@ -7,36 +7,45 @@ public class ReturnToPoolAreaer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Ball"))
+        if (!other.CompareTag("Ball"))
+            return;
+
+        Debug.Log("Ball left the area");
+
+        int ballsLeft = GameManager.GetInstance().GetCurrentNumberOfBalls();
+
+
+        if (Score.GetInstance().GetScore() >=
+            GameManager.GetInstance().GetRequredScore())
         {
-            Debug.Log("ball Left the area");
+            Gold.GetInstance().AddGold(ballsLeft);
 
-            objectPool.ReturnToPool(other.gameObject);
+            objectPool.ReturnEverthingToPool();
+            GameManager.GetInstance().SetCurrentNumberOfBalls(0);
 
-            GameManager.GetInstance().SetCurrentNumberOfBalls(GameManager.GetInstance().GetCurrentNumberOfBalls() - 1);
-
-            if (GameManager.GetInstance().GetCurrentNumberOfBalls() > 0)
+            if (GameManager.GetInstance().GetCurrentState() is RoundState roundState)
             {
-                objectPool.GetFromPool();
+                roundState.FinishRound();
             }
 
-            if (GameManager.GetInstance().GetCurrentNumberOfBalls() <= 0)
+            return; 
+        }
+
+        objectPool.ReturnToPool(other.gameObject);
+        ballsLeft--;
+
+        GameManager.GetInstance().SetCurrentNumberOfBalls(ballsLeft);
+
+        if (ballsLeft > 0)
+        {
+            objectPool.GetFromPool();
+        }
+        else
+        {
+            if (GameManager.GetInstance().GetCurrentState() is RoundState roundState)
             {
-                RoundState currentRound = (RoundState)GameManager.GetInstance().GetCurrentState();
-                currentRound.FinishRound();
-            }
-
-            if (Score.GetInstance().GetScore() >= GameManager.GetInstance().GetRequredScore())
-            {
-                //TODO: make sure that the player gets the gold for the balls left in the pool
-                Gold.GetInstance().AddGold(GameManager.GetInstance().GetCurrentNumberOfBalls());
-
-                objectPool.ReturnEverthingToPool();
-                GameManager.GetInstance().SetCurrentNumberOfBalls(0);
-
-                RoundState currentRound = (RoundState)GameManager.GetInstance().GetCurrentState();
-                currentRound.FinishRound();
-            }
-        } 
+                roundState.FinishRound();
+            };
+        }
     }
 }

@@ -20,6 +20,9 @@ public class GrabItem : MonoBehaviour
     [Header("Input")]
     [SerializeField] private InputAction grabAction;
 
+    [Header("PriceArea")]
+    [SerializeField] private WinPriceCollider PriceArea;
+
     private bool isMoving = false;
     private GameObject grabbedObject = null;
 
@@ -52,7 +55,9 @@ public class GrabItem : MonoBehaviour
         if (GameManager.GetInstance().GetCurrentState() is ShopState)
         {
             if (!isMoving && HasTicket)
+            {
                 StartCoroutine(GrabRoutine());
+            }
         }
     }
 
@@ -84,6 +89,8 @@ public class GrabItem : MonoBehaviour
                     }
                 }
             }
+
+            PriceArea.ResetIsGettingPrize();
 
             yield return null;
         }

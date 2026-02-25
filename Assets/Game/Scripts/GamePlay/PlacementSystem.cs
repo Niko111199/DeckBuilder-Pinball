@@ -62,6 +62,12 @@ public class PlacementSystem : MonoBehaviour
         if (!Physics.Raycast(ray, out RaycastHit hit, 20f))
             return;
 
+        if (indcator != null)
+        {
+            Destroy(indcator);
+            indcator = null;
+        }
+
         GameObject placedObject = Instantiate(prefab, Vector3.zero, Quaternion.identity, ParantObject.transform);
 
         Collider col = placedObject.GetComponentInChildren<Collider>();
@@ -81,7 +87,6 @@ public class PlacementSystem : MonoBehaviour
 
         Debug.Log($"Placed object at {spawnPosition} on grid {gridPosition}!");
 
-        Destroy(indcator);
         GameManager.GetInstance().ChangeState(new ShopState());
     }
 }
