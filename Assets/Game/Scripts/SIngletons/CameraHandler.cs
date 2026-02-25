@@ -9,6 +9,7 @@ public class CameraHandler : MonoBehaviour
     [Header("Refrences")]
     [SerializeField] private GameObject pinballCamera;
     [SerializeField] private GameObject shopCamera;
+    [SerializeField] private GameObject MenuCamera;
 
     public GameObject Getpinballcamera()
     {
@@ -18,6 +19,11 @@ public class CameraHandler : MonoBehaviour
     public GameObject GetShopCamera()
     {
         return shopCamera;
+    }
+
+    public GameObject GetMenuCamera()
+    {
+        return MenuCamera;
     }
 
     public static CameraHandler GetInstance()

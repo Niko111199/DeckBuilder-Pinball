@@ -8,6 +8,8 @@ public class RoundState : GameState
 
     public override void Enter()
     {
+        CameraHandler.GetInstance().MoveCameraSmooth(CameraHandler.GetInstance().Getpinballcamera().transform , 1.0f);
+
         Debug.Log("Round started: " + GameManager.GetInstance().GetCurrentRound());
         Score.GetInstance().ClereScore();
         GameManager.GetInstance().SetCurrentNumberOfBalls(GameManager.GetInstance().GetNumberOfBalls());

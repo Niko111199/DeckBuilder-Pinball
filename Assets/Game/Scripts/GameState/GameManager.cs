@@ -111,7 +111,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        ChangeState(new RoundState());
+        ChangeState(new MenuState());
     }
 
     void Update()
@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
 
         Score.GetInstance().ClereScore();
         Gold.GetInstance().ClearGold();
-        CameraHandler.GetInstance().ResetCamera();
+        CameraHandler.GetInstance().MoveCameraSmooth(CameraHandler.GetInstance().Getpinballcamera().transform, 1f);
 
         foreach (Transform child in PlayerPlacedItemParant.transform)
         {

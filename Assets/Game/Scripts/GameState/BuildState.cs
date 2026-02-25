@@ -22,6 +22,8 @@ public class BuildState : GameState
     {
         Debug.Log("Entering Build State");
 
+        CameraHandler.GetInstance().MoveCameraSmooth(CameraHandler.GetInstance().Getpinballcamera().transform, 1.0f);
+
         gridSystem = Object.FindObjectsByType<GridLocator>(FindObjectsInactive.Include,FindObjectsSortMode.None);
 
         foreach (var item in gridSystem)

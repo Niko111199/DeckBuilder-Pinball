@@ -33,8 +33,6 @@ public class ShopState : GameState
 
     public override void Exit()
     {
-        CameraHandler.GetInstance().MoveCameraSmooth(pinballcamera.transform, 1f);
-
         Debug.Log("Shop closed");
     }
 }
