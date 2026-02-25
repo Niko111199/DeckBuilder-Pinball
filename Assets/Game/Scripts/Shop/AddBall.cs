@@ -5,8 +5,8 @@ public class AddBall:ShopItem
     public AddBall()
     {
         itemName = "Extra Ball";
-        price = 2;
         description = "Gives you a Ekstra ball each Round.";
+        itemRarity = Rarity.Rare;
     }
 
     public override void BuyItem()

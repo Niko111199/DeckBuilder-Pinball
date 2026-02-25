@@ -1,11 +1,10 @@
-using System.Collections;
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
     private static GameManager Instance;
 
-    //TODO: make pusable to Reset Game
     [Header("Refrences")]
     [SerializeField] private GameState currentState;
     [SerializeField] private ObjectPool ballPool;
@@ -16,8 +15,10 @@ public class GameManager : MonoBehaviour
     private int currentRound = 1;
     private int FinalRound = 8;
     private int requredScore;
+    public event Action<int> OnRoundChanged;
     private int numberOfBalls = 3;
     private int currentNumberOfBalls;
+    public event Action<int> OnNumberOfBallsChanged;
 
     private bool IsShopOpen = false;
 
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
     public void SetRequredScore(int value)
     {
         requredScore = value;
+        OnRoundChanged?.Invoke(requredScore);
     }
 
     public ObjectPool GetBallPool()
@@ -84,6 +86,7 @@ public class GameManager : MonoBehaviour
     public void SetCurrentNumberOfBalls(int value)
     {
         currentNumberOfBalls = value;
+        OnNumberOfBallsChanged?.Invoke(currentNumberOfBalls);
     }
 
     public void SetNumberOfBalls(int value)
@@ -136,7 +139,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //TODO: make pusable to Reset Game, dosent work right now
     public void ResetGame()
     {
         currentRound = 1;
@@ -151,7 +153,7 @@ public class GameManager : MonoBehaviour
         }
 
         FlipperScript[] flippers =
-           Object.FindObjectsByType<FlipperScript>(FindObjectsSortMode.None);
+           UnityEngine.Object.FindObjectsByType<FlipperScript>(FindObjectsSortMode.None);
 
         foreach (FlipperScript flipper in flippers)
         {

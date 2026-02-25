@@ -6,7 +6,7 @@ public class MoneyBumper : PlaceableItem
     {
         itemName = "Money Bumper";
         description = "A bumper that gives extra money when hit.";
-        price = 2;
+        itemRarity = Rarity.Legendary;
     }
 
     public override void SetPrefab()

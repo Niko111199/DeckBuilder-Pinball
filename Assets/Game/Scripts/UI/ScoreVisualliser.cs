@@ -6,11 +6,28 @@ public class ScoreVisualliser : MonoBehaviour
     [SerializeField]private TMPro.TMP_Text PlayerScoreText;
     [SerializeField]private TMPro.TMP_Text RequiredScoreText;
 
-    //TODO: Optimize by updating only when score changes
-    void Update()
+    private void Start()
     {
-        PlayerScoreText.text = "Score: " + Score.GetInstance().GetScore().ToString();
+        Score.GetInstance().OnScoreChanged += UpdateScoreText;
 
-        RequiredScoreText.text = "Required Score: " + GameManager.GetInstance().GetRequredScore().ToString();
+        UpdateScoreText(Score.GetInstance().GetScore());
+
+        GameManager.GetInstance().OnRoundChanged += UpdateRequiredScoreText;
+    }
+
+    private void OnDestroy()
+    {
+        if (Score.GetInstance() != null)
+            Score.GetInstance().OnScoreChanged -= UpdateScoreText;
+    }
+
+    private void UpdateScoreText(int amount)
+    {
+        PlayerScoreText.text = "Score: " + amount.ToString();
+    }
+
+    private void UpdateRequiredScoreText(int amount)
+    {
+        RequiredScoreText.text = "Required Score: " + amount.ToString();
     }
 }

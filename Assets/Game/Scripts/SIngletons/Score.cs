@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Score : MonoBehaviour
@@ -6,6 +7,8 @@ public class Score : MonoBehaviour
 
     [Header("Player Score")]
     [SerializeField] private int playerScore;
+
+    public event Action<int> OnScoreChanged;
 
     public static Score GetInstance()
     {
@@ -28,18 +31,21 @@ public class Score : MonoBehaviour
     {
         playerScore += amount;
         Debug.Log("Score added: " + amount + ". Total score: " + playerScore);
+        OnScoreChanged?.Invoke(playerScore);
     }
 
     public void RemoveScore(int amount)
     {
         playerScore -= amount;
         Debug.Log("Score removed: " + amount + ". Total score: " + playerScore);
+        OnScoreChanged?.Invoke(playerScore);
     }
 
     public void ClereScore()
     {
         playerScore = 0;
         Debug.Log("Score cleared. Total score: " + playerScore);
+        OnScoreChanged?.Invoke(playerScore);
     }
 
     public int GetScore()

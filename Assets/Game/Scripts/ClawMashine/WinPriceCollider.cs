@@ -34,6 +34,7 @@ public class WinPriceCollider : MonoBehaviour
         Debug.Log("Loaded " + prizes.Count + " shop items.");
     }
 
+    //TODO: make it take rarity into account and visually show the prize being awarded to the player
     private void OnTriggerEnter(Collider collision)
     {
         Debug.Log("Collision detected with: " + collision.gameObject.name);

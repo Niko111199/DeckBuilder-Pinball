@@ -9,7 +9,7 @@ public class MoreFlipperStrength : ShopItem
     {
         itemName = "More Flipper Strength";
         description = "Increases the strength of the flippers by " + powerToAdd;
-        price = 1;
+        itemRarity = Rarity.Common;
     }
 
     public override void BuyItem()

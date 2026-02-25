@@ -6,7 +6,6 @@ using UnityEngine;
 //    {
 //        itemName = "Canon";
 //        description = "A canon that shoots the ball.";
-//        price = 2;
 //    }
 //    public override void SetPrefab()
 //    {

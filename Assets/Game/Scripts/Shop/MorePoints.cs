@@ -6,7 +6,7 @@ public class MorePoints : ShopItem
     {
         itemName = "More Points";
         description = "Increase 5 points earned per bumper hit.";
-        price = 2;
+        itemRarity = Rarity.Common;
     }
 
     public override void BuyItem()

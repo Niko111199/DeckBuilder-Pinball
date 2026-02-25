@@ -5,9 +5,21 @@ public class BallsLeftVisuelliser : MonoBehaviour
     [Header("Text Area")]
     [SerializeField] private TMPro.TMP_Text BallCounter;
 
-    //TODO: optimize so it only updates when the number of balls changes
-    void Update()
+    private void Start()
     {
-        BallCounter.text = "Balls Left: " + GameManager.GetInstance().GetCurrentNumberOfBalls().ToString();
+        GameManager.GetInstance().OnNumberOfBallsChanged += Updateballcounter;
+
+        Updateballcounter(GameManager.GetInstance().GetCurrentNumberOfBalls());
+    }
+
+    private void OnDestroy()
+    {
+        if (GameManager.GetInstance() != null)
+            GameManager.GetInstance().OnNumberOfBallsChanged -= Updateballcounter;
+    }
+
+    private void Updateballcounter(int amount)
+    {
+        BallCounter.text = "Balls Left: " + amount.ToString();
     }
 }

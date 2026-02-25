@@ -6,7 +6,7 @@ public class AddBumper : PlaceableItem
     {
         itemName = "Add Bumper";
         description = "A bumper that adds 10 points when hit.";
-        price = 1;
+        itemRarity = Rarity.Uncommon;
     }
 
     public override void SetPrefab()

@@ -5,9 +5,21 @@ public class GoldVisuelliser : MonoBehaviour
     [Header("Text Area")]
     [SerializeField] private TMPro.TMP_Text GoldText;
 
-    //TODO: optimize so it only updates when the amount of gold changes
-    void Update()
+    private void Start()
     {
-        GoldText.text = "Gold: " + Gold.GetInstance().GetGold().ToString();
+        Gold.GetInstance().OnGoldAmountChanged += UpdateGoldText;
+
+        UpdateGoldText(Gold.GetInstance().GetGold());
+    }
+
+    private void OnDestroy()
+    {
+        if (Gold.GetInstance() != null)
+            Gold.GetInstance().OnGoldAmountChanged -= UpdateGoldText;
+    }
+
+    private void UpdateGoldText(int amount)
+    {
+        GoldText.text = "Gold: " + amount.ToString();
     }
 }

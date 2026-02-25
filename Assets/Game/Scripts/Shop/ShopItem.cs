@@ -2,10 +2,17 @@ using UnityEngine;
 
 public abstract class ShopItem
 {
+    protected enum Rarity
+    {
+        Common,
+        Uncommon,
+        Rare,
+        Epic,
+        Legendary
+    }
+
     protected string itemName;
-    //TODO: remove Price, its not used anymore
-    protected int price;
-    //TODO: add Raraty
+    protected Rarity itemRarity;
     protected string description;
 
     public abstract void BuyItem();
@@ -13,11 +20,6 @@ public abstract class ShopItem
     public string GetItemName()
     {
         return itemName;
-    }
-
-    public int GetPrice()
-    {
-        return price;
     }
 
     public string GetDescription()

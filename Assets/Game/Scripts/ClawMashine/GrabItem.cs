@@ -131,7 +131,7 @@ public class GrabItem : MonoBehaviour
 
     public void buyTicket(int price)
     {
-        if(Gold.GetInstance().GetGold() >= price)
+        if (Gold.GetInstance().GetGold() >= price && !HasTicket)
         {
             Gold.GetInstance().RemoveGold(price);
             HasTicket = true;
