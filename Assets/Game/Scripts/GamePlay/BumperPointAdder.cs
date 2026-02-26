@@ -28,7 +28,7 @@ public class BumperPointAdder : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.CompareTag("Ball"))
+        if(collision.gameObject.CompareTag("Ball") || collision.gameObject.CompareTag("IceBall"))
         {
             Score.GetInstance().AddScore(pointsToAdd);
         }

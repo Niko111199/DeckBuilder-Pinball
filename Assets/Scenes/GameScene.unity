@@ -2081,8 +2081,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1745848, y: 0, z: 0, w: 0.98464215}
-  m_LocalPosition: {x: 0.76, y: 2.14, z: -11.48}
+  m_LocalRotation: {x: 0.07605083, y: -0.022458617, z: 0.004506753, w: 0.99684083}
+  m_LocalPosition: {x: -12.73399, y: 3.52, z: -0.8800001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2887,6 +2887,7 @@ Transform:
   m_Children:
   - {fileID: 1330525598}
   - {fileID: 1888413604}
+  - {fileID: 1759993132}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &410087039
@@ -9457,8 +9458,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.703, y: 0.596, z: 11.482}
-  m_LocalScale: {x: 0.27, y: 0.27, z: 0.27}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 853297238}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9506,7 +9507,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1759993132}
   - {fileID: 1184760801}
   - {fileID: 2032629748}
   - {fileID: 1317649351}
@@ -10370,11 +10370,11 @@ Transform:
   m_GameObject: {fileID: 1759993131}
   serializedVersion: 2
   m_LocalRotation: {x: 0.07605083, y: -0.022458617, z: 0.004506753, w: 0.99684083}
-  m_LocalPosition: {x: -0.05398941, y: 4.03151, z: -5.5756702}
+  m_LocalPosition: {x: -16.41112, y: 3.57721, z: 0.9068699}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1470739625}
+  m_Father: {fileID: 397300298}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1765430731
 GameObject:
@@ -10564,6 +10564,7 @@ MonoBehaviour:
   - {fileID: 8273737607351125431, guid: 7ad58c5f65e212041902636a08c029b5, type: 3}
   - {fileID: 8273737607351125431, guid: 1a43eac1f8711da469d0d8ce3cd169db, type: 3}
   - {fileID: 6407710930605692142, guid: e2322d1ba0f83484280d35690703a6b1, type: 3}
+  - {fileID: 8273737607351125431, guid: ed21be819b42a00468501507d1066d5f, type: 3}
 --- !u!1 &1786070753
 GameObject:
   m_ObjectHideFlags: 0

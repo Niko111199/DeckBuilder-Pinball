@@ -7,7 +7,7 @@ public class BumperMoneyAdder : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Ball"))
+        if (collision.gameObject.CompareTag("Ball") || collision.gameObject.CompareTag("IceBall"))
         {
             Gold.GetInstance().AddGold(MoneyToAdd);
         }

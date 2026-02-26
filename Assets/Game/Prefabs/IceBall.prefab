@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 4073173924641536516}
   - component: {fileID: 1228238106643511114}
   - component: {fileID: 6921397729462357199}
+  - component: {fileID: 7238990802981645601}
   m_Layer: 0
-  m_Name: Ball
-  m_TagString: Ball
+  m_Name: IceBall
+  m_TagString: IceBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0c395d6cb2e90924e9c321a8cb666abc, type: 2}
+  - {fileID: 2100000, guid: 73fc5f99f0a5bc046a2e1626560a6914, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,3 +141,17 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 2
+--- !u!114 &7238990802981645601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7725245638458157853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00be6d1a217335f4e9bc5295e64c9bc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MakeIceBallMelt
+  IceBall: {fileID: 7725245638458157853}
+  meltTime: 0.1
