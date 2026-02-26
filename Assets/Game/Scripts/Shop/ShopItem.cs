@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class ShopItem
 {
-    protected enum Rarity
+    public enum Rarity
     {
         Common,
         Uncommon,
@@ -25,5 +25,10 @@ public abstract class ShopItem
     public string GetDescription()
     {
         return description;
+    }
+
+    public Rarity GetRarity()
+    {
+        return itemRarity;
     }
 }
