@@ -56,14 +56,7 @@ public class Score : MonoBehaviour
 
     public void IncrementHitMultiplier()
     {
-        hitMultiplier++;
-
-        Debug.Log("hitMultiplier is " + hitMultiplier);
-
-        if (hitMultiplier > 5)
-        {
-            hitMultiplier = 5;
-        }
+        hitMultiplier = Mathf.Min(hitMultiplier + 1, 6);
     }
 
     public void ResetHitMultiplier()

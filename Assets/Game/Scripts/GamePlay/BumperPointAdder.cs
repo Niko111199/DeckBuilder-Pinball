@@ -16,12 +16,14 @@ public class BumperPointAdder : MonoBehaviour
 
     private Vector3 originalLocalPos;
     private int startingPoints;
+    private float startFontsize;
 
     private void Start()
     {
         startingPoints = pointsToAdd;
         originalLocalPos = textContainer.transform.localPosition;
         textContainer.SetActive(false);
+        startFontsize = scoreDisplay.fontSize;
     }
 
     public void ResetPoints()
@@ -65,10 +67,9 @@ public class BumperPointAdder : MonoBehaviour
         }
         else
         {
+            scoreDisplay.fontSize = startFontsize + ((float)Score.GetInstance().GetHitMultiplier() / 10) - 0.1f;
             scoreDisplay.text = multiplierUsed.ToString() + "X " + pointsToAdd.ToString();
         }
-
-        textContainer.transform.localPosition = startPos;
 
         while (elapsed < duration)
         {
@@ -81,5 +82,6 @@ public class BumperPointAdder : MonoBehaviour
 
         textContainer.transform.localPosition = originalLocalPos;
         textContainer.SetActive(false);
+        scoreDisplay.fontSize = startFontsize;
     }
 }

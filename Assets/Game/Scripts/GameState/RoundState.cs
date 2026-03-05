@@ -13,7 +13,7 @@ public class RoundState : GameState
         Debug.Log("Round started: " + GameManager.GetInstance().GetCurrentRound());
         Score.GetInstance().ClereScore();
         GameManager.GetInstance().SetCurrentNumberOfBalls(GameManager.GetInstance().GetNumberOfBalls());
-        GameManager.GetInstance().SetRequredScore(GameManager.GetInstance().GetCurrentRound() * 100);
+        GameManager.GetInstance().SetRequredScore(SetNeedScore(GameManager.GetInstance().GetCurrentRound()));
 
         roundFinished = false;
 
@@ -39,6 +39,32 @@ public class RoundState : GameState
         else
         {
             GameManager.GetInstance().ChangeState(new LoseState());
+        }
+    }
+
+    //TODO: need to be balance tested
+    private int SetNeedScore(int roundNumber)
+    {
+        switch (roundNumber)
+        {
+            case 1:
+                return 100;
+            case 2:
+                return 500;
+            case 3:
+                return 1000;
+            case 4:
+                return 2500;
+            case 5:
+                return 5000;
+            case 6:
+                return 10000;
+            case 7:
+                return 15000;
+            case 8:
+                return 25000;
+            default: 
+                return 0;
         }
     }
 
