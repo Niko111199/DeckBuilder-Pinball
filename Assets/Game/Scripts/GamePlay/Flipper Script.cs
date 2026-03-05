@@ -40,6 +40,14 @@ public class FlipperScript : MonoBehaviour
         flipperStrength = value;
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ball"))
+        {
+            Score.GetInstance().ResetHitMultiplier();
+        }
+    }
+
     void Update()
     {
         JointSpring spring = new JointSpring();

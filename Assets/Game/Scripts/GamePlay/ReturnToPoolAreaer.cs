@@ -14,6 +14,7 @@ public class ReturnToPoolAreaer : MonoBehaviour
 
         int ballsLeft = GameManager.GetInstance().GetCurrentNumberOfBalls();
 
+        Score.GetInstance().ResetHitMultiplier();
 
         if (Score.GetInstance().GetScore() >=
             GameManager.GetInstance().GetRequredScore())

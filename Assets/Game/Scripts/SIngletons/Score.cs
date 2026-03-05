@@ -7,6 +7,7 @@ public class Score : MonoBehaviour
 
     [Header("Player Score")]
     [SerializeField] private int playerScore;
+    private int hitMultiplier = 1;
 
     public event Action<int> OnScoreChanged;
 
@@ -46,6 +47,30 @@ public class Score : MonoBehaviour
         playerScore = 0;
         Debug.Log("Score cleared. Total score: " + playerScore);
         OnScoreChanged?.Invoke(playerScore);
+    }
+
+    public int GetHitMultiplier()
+    {
+        return hitMultiplier;
+    }
+
+    public void IncrementHitMultiplier()
+    {
+        hitMultiplier++;
+
+        Debug.Log("hitMultiplier is " + hitMultiplier);
+
+        if (hitMultiplier > 5)
+        {
+            hitMultiplier = 5;
+        }
+    }
+
+    public void ResetHitMultiplier()
+    {
+        hitMultiplier = 1;
+
+        Debug.Log("Hitmultiplayer is reset");
     }
 
     public int GetScore()

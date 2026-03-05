@@ -128,6 +128,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BumperPointAdder
   pointsToAdd: 10
+  textContainer: {fileID: 3412412996532108246}
+  scoreDisplay: {fileID: 7282349515596993618}
+  offset: {x: 0, y: 0, z: 0}
+  speed: 0.5
+  duration: 0.5
 --- !u!1 &8273737607351125431
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,5 +163,84 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7101105436664966560}
+  - {fileID: 6079487235969936865}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &8405762787754371666
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6346071525690215729}
+    m_Modifications:
+    - target: {fileID: 2376187385806948275, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.956
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376187385806948275, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376187385806948275, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376187385806948275, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376187385806948275, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376187385806948275, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376187385806948275, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376187385806948275, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376187385806948275, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2376187385806948275, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628198255693074820, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+      propertyPath: m_Name
+      value: ScoreVisualiserContainer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+--- !u!1 &3412412996532108246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6628198255693074820, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+  m_PrefabInstance: {fileID: 8405762787754371666}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6079487235969936865 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2376187385806948275, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+  m_PrefabInstance: {fileID: 8405762787754371666}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7282349515596993618 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1276593426836389376, guid: 4d8aa1c11820c004098c462b2b069ea3, type: 3}
+  m_PrefabInstance: {fileID: 8405762787754371666}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
