@@ -83,6 +83,14 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
+    //TODO: refactor when there can be diffrent items in pool
+    public void RestockPool()
+    {
+        ReturnEverthingToPool();
+
+        SpawnEverthingInPool();
+    }
+
     private void OnDrawGizmos()
     {
         if (SpawnPoint != null)
