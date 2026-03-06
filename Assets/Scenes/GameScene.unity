@@ -5286,8 +5286,9 @@ GameObject:
   - component: {fileID: 1003390146}
   - component: {fileID: 1003390145}
   - component: {fileID: 1003390144}
+  - component: {fileID: 1003390147}
   m_Layer: 5
-  m_Name: Resock  Shop Button
+  m_Name: Restsock  Shop Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5357,9 +5358,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1634889020}
+      - m_Target: {fileID: 1003390147}
         m_TargetAssemblyTypeName: ObjectPool, Assembly-CSharp
-        m_MethodName: RestockPool
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5407,6 +5408,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003390142}
   m_CullTransparentMesh: 1
+--- !u!114 &1003390147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1003390142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce1537d278e3004ba543a31c4780770, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RestockShopButton
+  button: {fileID: 1003390144}
+  TextArear: {fileID: 1916634128}
+  objectPool: {fileID: 1634889020}
 --- !u!1 &1004361463
 GameObject:
   m_ObjectHideFlags: 0

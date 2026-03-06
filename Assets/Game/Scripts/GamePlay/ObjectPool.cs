@@ -10,6 +10,7 @@ public class ObjectPool : MonoBehaviour
 
     private Queue<GameObject> pool = new Queue<GameObject>();
 
+    //TODO: make this inharited insted, to keep code cleaner
     [Header("Spawn Everthing at start")]
     [SerializeField] private bool SpawnEverythingAtStart = false;
     [SerializeField] private float spawnRadius = 0f; 
@@ -17,16 +18,23 @@ public class ObjectPool : MonoBehaviour
 
     private void Awake()
     {
+        InitializePool();
+
+        if (SpawnEverythingAtStart)
+        {
+            SpawnEverthingInPool();
+        }
+    }
+
+    private void InitializePool()
+    {
+        pool.Clear();
+
         for (int i = 0; i < poolSize; i++)
         {
             GameObject obj = Instantiate(prefab, transform);
             obj.SetActive(false);
             pool.Enqueue(obj);
-        }
-
-        if (SpawnEverythingAtStart)
-        {
-            SpawnEverthingInPool();
         }
     }
 
@@ -75,6 +83,21 @@ public class ObjectPool : MonoBehaviour
         reusedObj.transform.position = randomPos;
     }
 
+    public void ReturnAndRespawnNewItem(GameObject oldObj)
+    {
+        Destroy(oldObj);
+
+        GameObject newObj = Instantiate(prefab, transform);
+
+        newObj.SetActive(false);
+        pool.Enqueue(newObj);
+
+        newObj.SetActive(true);
+        Vector3 randomPos = SpawnPoint.position + Random.insideUnitSphere * spawnRadius;
+        randomPos.y = SpawnPoint.position.y;
+        newObj.transform.position = randomPos;
+    }
+
     public void ReturnEverthingToPool()
     {
         foreach (Transform child in transform)
@@ -83,10 +106,14 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    //TODO: refactor when there can be diffrent items in pool
     public void RestockPool()
     {
-        ReturnEverthingToPool();
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        InitializePool();
 
         SpawnEverthingInPool();
     }

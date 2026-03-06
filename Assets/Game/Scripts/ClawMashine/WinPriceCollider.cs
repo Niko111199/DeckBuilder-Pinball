@@ -50,56 +50,57 @@ public class WinPriceCollider : MonoBehaviour
                 return 7;
             default:
                 return 0;
-
         }
     }
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Collision detected with: " + collision.gameObject.name);
-
         if (collision.gameObject.CompareTag("Prize") && !isGettingPrize)
         {
             isGettingPrize = true;
 
-            if (prizes.Count == 0)
+            if (prizes.Count == 0) return;
+
+            gachaBall ball = collision.gameObject.GetComponent<gachaBall>();
+            if (ball == null)
             {
+                Debug.LogWarning("Collision object has no gachaBall script!");
                 return;
             }
 
-            ShopItem selectedPrize = GetWeightedRandomPrize();
+            ShopItem selectedPrize = GetWeightedRandomPrize(ball.GetRarity());
             selectedPrize.BuyItem();
-            Debug.Log("Awarded prize: " + selectedPrize.GetItemName() + " Raraty is: " + selectedPrize.GetRarity().ToString());
 
-            WaitForSeconds wait = new WaitForSeconds(2f);
+            Debug.Log("Awarded prize: " + selectedPrize.GetItemName() +
+                      " Rarity: " + selectedPrize.GetRarity().ToString());
+
             StartCoroutine(ResetBallAfterDelay(collision.gameObject));
         }
     }
 
-    ShopItem GetWeightedRandomPrize()
+    ShopItem GetWeightedRandomPrize(gachaBall.Rarity ballRarity)
     {
-        int totalWeight = 0;
+        var filteredPrizes = prizes
+            .Where(p => (ShopItem.Rarity)p.GetRarity() == (ShopItem.Rarity)ballRarity)
+            .ToList();
 
-        foreach (var prize in prizes)
+        if (filteredPrizes.Count == 0)
         {
-            totalWeight += GetRarityWeight(prize.GetRarity());
+            Debug.LogWarning("No prizes of rarity " + ballRarity);
+            return prizes[0];
         }
 
+        int totalWeight = filteredPrizes.Sum(p => GetRarityWeight(p.GetRarity()));
         int randomValue = UnityEngine.Random.Range(0, totalWeight);
 
         int currentWeight = 0;
-
-        foreach (var prize in prizes)
+        foreach (var prize in filteredPrizes)
         {
             currentWeight += GetRarityWeight(prize.GetRarity());
-
-            if (randomValue < currentWeight)
-            {
-                return prize;
-            }
+            if (randomValue < currentWeight) return prize;
         }
 
-        return prizes[0];
+        return filteredPrizes[0];
     }
 
     public void ResetIsGettingPrize()
@@ -107,10 +108,10 @@ public class WinPriceCollider : MonoBehaviour
         isGettingPrize = false;
     }
 
-
+   
     IEnumerator ResetBallAfterDelay(GameObject ball)
     {
         yield return new WaitForSeconds(2f);
-        PrizePool.ReturnAndRespawn(ball);
+        PrizePool.ReturnAndRespawnNewItem(ball);
     }
 }
