@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class BuildState : GameState
 {
-    //TODO: find a better way then the empty GridLocator
-    private GridLocator[] gridSystem;
+    private GameObject gridSystem;
     private GameObject itemToPlace;
 
     public BuildState() : base() { }
@@ -24,22 +23,17 @@ public class BuildState : GameState
 
         CameraHandler.GetInstance().MoveCameraSmooth(CameraHandler.GetInstance().Getpinballcamera().transform, 1.0f);
 
-        gridSystem = Object.FindObjectsByType<GridLocator>(FindObjectsInactive.Include,FindObjectsSortMode.None);
+        PrefabManager prefabmanger = Object.FindAnyObjectByType<PrefabManager>(FindObjectsInactive.Include);
+        gridSystem = prefabmanger.GetPrefab(4);
 
-        foreach (var item in gridSystem)
-        {
-            item.gameObject.SetActive(true);
-        }
+        gridSystem.SetActive(true);
     }
 
     public override void Exit()
     {
         if (gridSystem == null) return;
 
-        foreach (var item in gridSystem)
-        {
-            item.gameObject.SetActive(false);
-        }
+        gridSystem.SetActive(false);
 
         Debug.Log("Closing Build State");
     }

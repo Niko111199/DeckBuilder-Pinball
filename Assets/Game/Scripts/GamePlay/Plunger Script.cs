@@ -6,25 +6,26 @@ using UnityEngine.UI;
 public class PlungerScript : MonoBehaviour
 {
     [Header("powerbar Settings")]
-    [SerializeField] private float power;
-    [SerializeField] private float minPower = 0f;
-    [SerializeField] private float maxPower = 100f;
-    [SerializeField] private float chargeSpeed = 50f;
-    [SerializeField] private Slider powerSlider;
+    [SerializeField] protected float power;
+    [SerializeField] protected float minPower = 0f;
+    [SerializeField] protected float maxPower = 100f;
+    [SerializeField] protected float chargeSpeed = 50f;
+    [SerializeField] protected Slider powerSlider;
 
     [Header("Controls")]
-    [SerializeField] private InputAction plungerAction;
+    [SerializeField] protected InputAction plungerAction;
 
-    private List<Rigidbody> ballList = new List<Rigidbody>();
+    protected List<Rigidbody> ballList = new List<Rigidbody>();
 
-    void Start()
+    protected virtual void Start()
     {
         powerSlider.minValue = minPower;
         powerSlider.maxValue = maxPower;
         power = minPower;
     }
 
-    void Update()
+    //TODO: Optimize Out Update function, maby use an evnet??
+    protected virtual void Update()
     {
         powerSlider.gameObject.SetActive(ballList.Count > 0);
         powerSlider.value = power;
@@ -49,7 +50,7 @@ public class PlungerScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {
@@ -59,7 +60,7 @@ public class PlungerScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Ball"))
         {
@@ -69,12 +70,12 @@ public class PlungerScript : MonoBehaviour
         }
     }
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         plungerAction.Enable();
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         plungerAction.Disable();
     }

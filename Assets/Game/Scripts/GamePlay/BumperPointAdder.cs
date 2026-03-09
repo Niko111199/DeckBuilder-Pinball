@@ -43,6 +43,7 @@ public class BumperPointAdder : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        //TODO: Change IceBall to SpecialBall, to make it more generic
         if (collision.gameObject.CompareTag("Ball") || collision.gameObject.CompareTag("IceBall"))
         {
             int currentMultiplier = Score.GetInstance().GetHitMultiplier();

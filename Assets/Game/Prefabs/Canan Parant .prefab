@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 96291754377867426}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.76604444, z: 0, w: 0.64278764}
-  m_LocalPosition: {x: 0.26, y: 0.09, z: -0.01}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0.222, y: 0.09, z: -0.01}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.07}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5606512196364993165}
-  m_LocalEulerAnglesHint: {x: 0, y: 100, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &6028897588715712605
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -241,13 +241,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957044780779447127}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.76604444, z: 0, w: 0.64278764}
-  m_LocalPosition: {x: -0.15, y: 0.08, z: 0.09}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.218, y: 0.08, z: -0.003}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.07}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5606512196364993165}
-  m_LocalEulerAnglesHint: {x: 0, y: 100, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &2069612638736800737
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -464,13 +464,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6453592906382583061}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.08715578, z: 0, w: 0.9961947}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.09, z: -0.23}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.07}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5606512196364993165}
-  m_LocalEulerAnglesHint: {x: 0, y: 10, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2487113204364364672
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -684,7 +684,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1792464881484712875}
   - component: {fileID: 9128295720631040623}
-  - component: {fileID: 35165403489825288}
+  - component: {fileID: 554236452348729588}
   m_Layer: 0
   m_Name: plunger Trigger
   m_TagString: Untagged
@@ -700,7 +700,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7777750560382923737}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.034899585, y: -0, z: -0, w: 0.99939084}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.33497873, y: 0.37499988, z: 0.3543753}
   m_ConstrainProportionsScale: 0
@@ -728,7 +728,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: -0.000000014901161, z: 0}
---- !u!114 &35165403489825288
+--- !u!114 &554236452348729588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -737,9 +737,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7777750560382923737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c55460717bccb540be979e1b6456815, type: 3}
+  m_Script: {fileID: 11500000, guid: 52bc84317899cfb4c957b6dfbe63deb2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlungerScript
+  m_EditorClassIdentifier: Assembly-CSharp::CanonPlunger
   power: 0
   minPower: 0
   maxPower: 25
@@ -747,14 +747,14 @@ MonoBehaviour:
   powerSlider: {fileID: 2677729075323710788}
   plungerAction:
     m_Name: Plunger
-    m_Type: 1
-    m_ExpectedControlType: Button
-    m_Id: 2f613cb7-698b-48d1-86c7-6ac24898dd87
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ef79db24-f359-4051-9b41-b92784a84379
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: e9deffa2-7b12-49e2-b2ed-9ea04b693476
+      m_Id: 0ee360fe-e4c2-41b2-a6f9-2a5a0d18c1d6
       m_Path: <Keyboard>/space
       m_Interactions: 
       m_Processors: 
@@ -762,6 +762,67 @@ MonoBehaviour:
       m_Action: Plunger
       m_Flags: 0
     m_Flags: 0
+  rotationSpeed: 50
+  maxRotationAngle: 45
+  returnSpeed: 90
+  rotationAction:
+    m_Name: Rotation
+    m_Type: 0
+    m_ExpectedControlType: Axis
+    m_Id: dd500252-fa79-4c93-9973-51a6399efed4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 1D Axis
+      m_Id: f70e34fd-e65a-49de-be5e-a6fd03e72449
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotation
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 2dad8a51-a0fb-47f7-a470-b7ea6b41a5e0
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotation
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 14bb5a09-b3dc-47c5-8c02-244f178b2cb4
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotation
+      m_Flags: 8
+    - m_Name: 1D Axis
+      m_Id: 03ef4188-fd42-4424-8d5e-4a120f6f852d
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotation
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 9c5ab929-7221-4e05-a821-bf6874c0494f
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotation
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 088cd9ff-b0b0-4f13-9ff2-009a61ca2200
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rotation
+      m_Flags: 8
+    m_Flags: 0
+  container: {fileID: 6407710930605692142}
 --- !u!1 &8502136797331505522
 GameObject:
   m_ObjectHideFlags: 0

@@ -9384,6 +9384,7 @@ MonoBehaviour:
   - {fileID: 8273737607351125431, guid: 1a43eac1f8711da469d0d8ce3cd169db, type: 3}
   - {fileID: 6407710930605692142, guid: e2322d1ba0f83484280d35690703a6b1, type: 3}
   - {fileID: 8273737607351125431, guid: ed21be819b42a00468501507d1066d5f, type: 3}
+  - {fileID: 2133483243}
 --- !u!1 &1786070753
 GameObject:
   m_ObjectHideFlags: 0
@@ -11531,7 +11532,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2133483244}
-  - component: {fileID: 2133483245}
   m_Layer: 0
   m_Name: GridSystem
   m_TagString: Untagged
@@ -11558,18 +11558,6 @@ Transform:
   - {fileID: 1767091589}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2133483245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133483243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef8f78dac7bafc149914af99a4e9c7a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GridLocator
 --- !u!1001 &1001430806507423241
 PrefabInstance:
   m_ObjectHideFlags: 0
