@@ -129,7 +129,6 @@ public class GameManager : MonoBehaviour
         currentState.Enter();
     }
 
-    //TODO: Abstract out the shop system
     public void CloseShop()
     {
         if (IsShopOpen)
